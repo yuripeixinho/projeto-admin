@@ -1,0 +1,15 @@
+@import "./assets/scss/variables.scss";
+
+* {
+  font-family: $fontBody;
+  font-weight: 200;
+}
+
+.main-app {
+  display: flex;
+
+  .main-page-container {
+    flex: 6;
+    padding: 2.5% 5% 0 5%;
+  }
+}

@@ -1,0 +1,6 @@
+@import "../variables.scss";
+
+@mixin submitButton {
+  background-color: $color1;
+  padding: 0px 50px;
+}

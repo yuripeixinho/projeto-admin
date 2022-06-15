@@ -1,0 +1,8 @@
+@import "../../assets/scss/variables.scss";
+@import "../../assets/scss/mixins/font-style.scss";
+
+.header-section-container {
+  h1 {
+    @include titleNormal();
+  }
+}
