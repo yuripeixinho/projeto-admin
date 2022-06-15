@@ -1,26 +1,2 @@
 @import "../../assets/scss/variables.scss";
 
-.nav-bar-container {
-  flex: 1.2;
-
-  ul {
-    list-style: none;
-
-    li {
-      padding: 10%;
-      background-color: $blackColor1;
-      border-bottom: 1px solid $whiteColor3;
-      cursor: pointer;
-
-      span {
-        font-size: 20px;
-        color: $whiteColor1;
-        text-decoration: none;
-      }
-
-      &:hover {
-        background-color: $brownColor2;
-      }
-    }
-  }
-}

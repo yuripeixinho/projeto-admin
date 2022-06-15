@@ -7,9 +7,37 @@
 
 .main-app {
   display: flex;
-
   .main-page-container {
-    flex: 6;
+    flex: 7.5;
     padding: 2.5% 5% 0 5%;
+  }
+
+  .nav-bar-container {
+    flex: 1.5;
+    text-decoration: none;
+
+    ul {
+      list-style: none;
+
+      a {
+        text-decoration: none;
+        li {
+          padding: 10%;
+          background-color: $blackColor1;
+          border-bottom: 1px solid $whiteColor3;
+          cursor: pointer;
+
+          span {
+            font-size: 20px;
+            color: $whiteColor1;
+            text-decoration: none;
+          }
+
+          &:hover {
+            background-color: $brownColor2;
+          }
+        }
+      }
+    }
   }
 }
