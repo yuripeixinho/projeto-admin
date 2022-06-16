@@ -1,0 +1,21 @@
+@import "../../assets/scss/mixins.scss";
+
+.buttons-footer-container {
+  margin-top: 5%;
+
+  button {
+    margin-right: 15px;
+  }
+
+  .button-delete {
+    @include redButton();
+  }
+
+  .button-cancel {
+    @include blueButton();
+  }
+
+  .button-submit {
+    @include greenButton();
+  }
+}

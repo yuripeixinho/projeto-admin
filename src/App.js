@@ -19,6 +19,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
             <Route path="/product/form" element={<ProductForm />} />
+            <Route path="/product/form/:id" element={<ProductForm />} />
           </Routes>
         </div>
       </BrowserRouter>

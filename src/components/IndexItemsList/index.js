@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./styles.scss";
 
-export default function ItemTable({ items, buttonLabel, navigateEndpoint }) {
+export default function ItemTable({ items, buttonLabel, createEndpoint }) {
   let navigate = useNavigate();
 
   return (
@@ -13,15 +13,18 @@ export default function ItemTable({ items, buttonLabel, navigateEndpoint }) {
         <button
           type="button"
           className="add-item-button"
-          onClick={() => navigate(`${navigateEndpoint}/form`)}
+          onClick={() => navigate(`${createEndpoint}/form`)}
         >
           {buttonLabel}
         </button>
       </Col>
 
       {items?.map((item) => (
-        <Col xl="3" lg="3" md="3" sm="3" xs="3">
-          <div className="items-table-container">
+        <Col xl="3" lg="3" md="3" sm="3" xs="3" key={item.id}>
+          <div
+            className="items-table-container"
+            onClick={() => navigate(`${createEndpoint}/form/${item.id}`)}
+          >
             <h1>{item.nome}</h1>
           </div>
         </Col>

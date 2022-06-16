@@ -15,13 +15,17 @@ export default class ProductSerializer {
   }
 
   toJson(product) {
-    debugger;
     const productToJson = {};
 
     Object.assign(
       productToJson,
       product.nome && { nome: product.nome },
+      product.preco && { preco: product.preco },
+      product.ingredientes && { ingredientes: product.ingredientes },
+      product.linkImagem && { linkImagem: product.linkImagem },
+      product.quantCliques && { quantCliques: product.quantCliques }
     );
+
 
     return productToJson;
   }

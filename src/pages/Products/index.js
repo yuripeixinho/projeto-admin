@@ -25,7 +25,7 @@ export default function Products() {
       <ItemTable
         items={products}
         buttonLabel="Adicionar"
-        navigateEndpoint="/product"
+        createEndpoint="/product"
       />
     </Row>
   );

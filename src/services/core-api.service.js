@@ -30,6 +30,7 @@ export default class CoreApiService {
   }
 
   async create(item) {
+    debugger
     debugger;
     const response = await api.post(
       `${this.endpoint}`,
