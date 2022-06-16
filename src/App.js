@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
+import ProductForm from "./pages/Products/ProductForm";
 
 import "./styles.scss";
 
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/product/form" element={<ProductForm />} />
           </Routes>
         </div>
       </BrowserRouter>

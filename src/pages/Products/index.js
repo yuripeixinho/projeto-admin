@@ -22,7 +22,11 @@ export default function Products() {
     <Row>
       <HeaderSection title="Products" />
 
-      <ItemTable items={products} buttonLabel="Adicionar" />
+      <ItemTable
+        items={products}
+        buttonLabel="Adicionar"
+        navigateEndpoint="/product"
+      />
     </Row>
   );
 }
