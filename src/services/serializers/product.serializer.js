@@ -7,19 +7,20 @@ export default class ProductSerializer {
       product,
 
       json.response && {
-        produtos: json.response,
+        products: json.response,
       }
     );
 
     return product;
   }
 
-  toJson(bannerDestaqueHome) {
+  toJson(product) {
+    debugger;
     const productToJson = {};
 
     Object.assign(
       productToJson,
-    
+      product.nome && { nome: product.nome },
     );
 
     return productToJson;

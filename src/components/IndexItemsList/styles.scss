@@ -1,0 +1,14 @@
+@import "../../assets/scss/mixins.scss";
+
+.index-items-list-container {
+  .button-container {
+    margin: 0.5% 0 2% 0;
+
+    .add-item-button {
+      @include greenButton();
+    }
+  }
+
+  .items-table-container {
+  }
+}

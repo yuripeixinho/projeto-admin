@@ -22,7 +22,7 @@ export default class CoreApiService {
   }
 
   async list() {
-    debugger
+    debugger;
     const response = await api.get(`${this.endpoint}`);
     const data = response.data;
 
@@ -41,6 +41,7 @@ export default class CoreApiService {
   }
 
   async update(item, isFormDate = false) {
+    debugger;
     const response = await api.put(
       `${this.endpoint}/${item.id}`,
       isFormDate
