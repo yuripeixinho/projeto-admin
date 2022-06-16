@@ -1,4 +1,5 @@
 @import "../../assets/scss/mixins.scss";
+@import "../../assets/scss/variables.scss";
 
 .index-items-list-container {
   .button-container {
@@ -10,7 +11,34 @@
   }
 
   .items-table-container {
-    background-color: gray;
+    background-color: $blackColor3;
+    border-radius: 1.5%;
+    margin-bottom: 6%;
     cursor: pointer;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
+    img {
+      border-top-left-radius: 1.5%;
+      border-top-right-radius: 1.5%;
+      width: 100%;
+    }
+
+    .text-info-container {
+      color: $whiteColor1;
+      padding: 4.5%;
+
+      .cliques {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      h1 {
+        @include textHead();
+      }
+    }
+
+    &:hover {
+      box-shadow: rgb(38, 57, 77) 0px 20px 30px -5px;
+    }
   }
 }

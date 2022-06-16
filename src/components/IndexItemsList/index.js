@@ -25,7 +25,21 @@ export default function ItemTable({ items, buttonLabel, createEndpoint }) {
             className="items-table-container"
             onClick={() => navigate(`${createEndpoint}/form/${item.id}`)}
           >
-            <h1>{item.nome}</h1>
+            <img src={item.linkImagem} alt={item.nome} />
+
+            <Row className="text-info-container">
+              <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                <h1>{item.nome}</h1>
+              </Col>
+
+              <Col xl="6" lg="6" md="6" sm="6" xs="6">
+                <span>R$: {item.preco}</span>
+              </Col>
+
+              <Col xl="6" lg="6" md="6" sm="6" xs="6" className="cliques">
+                <span>Cliques: {item.quantCliques}</span>
+              </Col>
+            </Row>
           </div>
         </Col>
       ))}

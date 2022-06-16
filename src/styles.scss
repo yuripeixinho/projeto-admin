@@ -1,4 +1,5 @@
 @import "./assets/scss/variables.scss";
+@import "./assets/scss/mixins.scss";
 
 * {
   font-family: $fontBody;
@@ -44,4 +45,6 @@
 
 body {
   background-color: #c19a6b77;
+
+  @include textSmall();
 }

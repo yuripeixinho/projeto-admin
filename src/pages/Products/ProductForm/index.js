@@ -36,7 +36,7 @@ export default function ProductForm() {
         preco: "",
         ingredientes: "",
         linkImagem: "",
-        quantCliques: 0,
+        quantCliques: 1,
       });
 
       setActionCreate(true);

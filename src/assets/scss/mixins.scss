@@ -12,6 +12,18 @@
   font-weight: 400;
 }
 
+@mixin textHead() {
+  font-family: $fontBody;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+@mixin textSmall() {
+  font-family: $fontBody;
+  font-size: 16px;
+  font-weight: 300;
+}
+
 // BUTTONS
 @mixin buttonBody(
   $bgColor,
