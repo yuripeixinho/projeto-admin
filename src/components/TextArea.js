@@ -10,10 +10,11 @@ export default function TextArea({ label, type, required, ...props }) {
         {label}
         {required && <span className="required-hash"> *</span>}
       </label>
-
       <textarea type={type} className="input-text" {...field} />
 
-      <div>{meta.touched && meta.error ? <div>{meta.error}</div> : null}</div>
+      <div className="input-error">
+        {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+      </div>
     </>
   );
 }

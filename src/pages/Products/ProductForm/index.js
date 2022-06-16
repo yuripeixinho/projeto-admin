@@ -11,6 +11,7 @@ import ProductService from "../../../services/product.service";
 import { useNavigate } from "react-router-dom";
 
 import "./styles.scss";
+import product from "../../../validations/product";
 
 export default function ProductForm() {
   const { id } = useParams();
@@ -93,6 +94,7 @@ export default function ProductForm() {
       >
         <Formik
           enableReinitialize={true}
+          validationSchema={product}
           initialValues={productValues}
           onSubmit={(values) => {
             onCreateProduct(values);

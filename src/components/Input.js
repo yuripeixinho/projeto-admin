@@ -3,6 +3,7 @@ import { useField } from "formik";
 
 export default function Input({ label, type, required, ...props }) {
   const [field, meta] = useField(props);
+  debugger;
 
   return (
     <>
@@ -13,7 +14,9 @@ export default function Input({ label, type, required, ...props }) {
 
       <input type={type} className="input-text" {...field} />
 
-      <div>{meta.touched && meta.error ? <div>{meta.error}</div> : null}</div>
+      <div className="input-error">
+        {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+      </div>
     </>
   );
 }
