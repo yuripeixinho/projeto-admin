@@ -38,10 +38,12 @@ export default function PokemonForm() {
     } else {
       setPokemonValues({
         nome: "",
+        descricao: "",
+        vida: "",
+        dano: "",
         preco: "",
-        ingredientes: "",
-        linkImagem: "",
         quantCliques: 1,
+        linkImagem: "",
       });
 
       setActionCreate(true);
@@ -49,10 +51,13 @@ export default function PokemonForm() {
   }, [id]);
 
   async function onCreatePokemon(values) {
+    debugger;
     if (actionCreate) {
+      debugger;
       await _pokemonService
         .create(values)
         .then((response) => {
+          debugger;
           navigate("/pokemons");
         })
         .catch((response) => {
@@ -107,7 +112,29 @@ export default function PokemonForm() {
           {(props) => (
             <Form>
               <Row>
+                <Col xl="4" lg="4" md="4" sm="4" xs="4">
+                  <Input label="Nome" required={true} type="text" name="nome" />
+                </Col>
+
                 <Col xl="3" lg="3" md="3" sm="3" xs="3">
+                  <Input
+                    label="Vida"
+                    required={true}
+                    type="number"
+                    name="vida"
+                  />
+                </Col>
+
+                <Col xl="3" lg="3" md="3" sm="3" xs="3">
+                  <Input
+                    label="Dano"
+                    required={true}
+                    type="number"
+                    name="dano"
+                  />
+                </Col>
+
+                <Col xl="2" lg="2" md="2" sm="2" xs="2">
                   <Input
                     label="Preço"
                     required={true}
@@ -116,16 +143,12 @@ export default function PokemonForm() {
                   />
                 </Col>
 
-                <Col xl="9" lg="9" md="9" sm="9" xs="9">
-                  <Input label="Nome" required={true} type="text" name="nome" />
-                </Col>
-
                 <Col xl="12" lg="12" md="12" sm="12" xs="12">
                   <TextArea
-                    label="Ingredientes"
+                    label="Descrição"
                     required={true}
                     type="text"
-                    name="ingredientes"
+                    name="descricao"
                   />
                 </Col>
 

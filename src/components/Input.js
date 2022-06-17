@@ -3,7 +3,6 @@ import { useField } from "formik";
 
 export default function Input({ label, type, required, ...props }) {
   const [field, meta] = useField(props);
-  debugger;
 
   return (
     <>
