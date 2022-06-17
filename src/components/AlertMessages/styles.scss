@@ -1,0 +1,35 @@
+@import "../../assets/scss/variables.scss";
+@import "../../assets/scss/mixins.scss";
+
+.alert {
+  width: 100%;
+  margin: 20px auto;
+  position: relative;
+  border-radius: 5px;
+  background-color: $brownColor1;
+  border: 2px solid $brownColor1;
+  box-shadow: $brownColor1 4px 4px 0 0;
+  color: $brownColor1;
+
+  span {
+    @include textSmall();
+    font-weight: 500;
+  }
+}
+
+@mixin alert($name, $bgColor) {
+  $accentColor: darken($bgColor, 50);
+  .#{$name} {
+    background-color: #{$bgColor};
+    border-left: 5px solid $accentColor;
+    .close {
+      border-color: $accentColor;
+      color: $accentColor;
+    }
+  }
+}
+
+@include alert(simple-alert, $blueColor4);
+@include alert(success-alert, $greenColor4);
+@include alert(danger-alert, $redColor4);
+@include alert(warning-alert, $yellowColor4);

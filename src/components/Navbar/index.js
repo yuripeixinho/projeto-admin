@@ -14,9 +14,9 @@ export default function NavBar() {
           </li>
         </Link>
 
-        <Link to="/products">
+        <Link to="/pokemons">
           <li>
-            <span>Products</span>
+            <span>Pokemons</span>
           </li>
         </Link>
       </ul>

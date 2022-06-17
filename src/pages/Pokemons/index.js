@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Row } from "reactstrap";
 import HeaderSection from "../../components/HeaderSection";
+import ItemTable from "../../components/IndexItemsList";
 import PokemonService from "../../services/pokemon.service";
 
-import "./styles.scss";
-
-export default function Dashboard() {
-  const [pokemonInfo, setPokemonInfo] = useState([]);
+export default function Pokemons() {
+  const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
     async function init() {
       const _pokemonService = new PokemonService();
+
       const pokemonResponse = await _pokemonService.list();
-      setPokemonInfo(pokemonResponse?.pokemons);
+      setPokemons(pokemonResponse?.pokemons);
     }
 
     init();
@@ -20,7 +20,13 @@ export default function Dashboard() {
 
   return (
     <Row>
-      <HeaderSection title="Dashboard" />
+      <HeaderSection title="Pokemons" />
+
+      <ItemTable
+        items={pokemons}
+        buttonLabel="Adicionar"
+        createEndpoint="/pokemon"
+      />
     </Row>
   );
 }

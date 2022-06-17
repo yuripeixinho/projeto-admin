@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
-import Products from "./pages/Products";
-import ProductForm from "./pages/Products/ProductForm";
+import Pokemons from "./pages/Pokemons";
+import PokemonForm from "./pages/Pokemons/PokemonForm";
 
 import "./styles.scss";
 
@@ -17,9 +17,9 @@ function App() {
         <div className="main-page-container">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product/form" element={<ProductForm />} />
-            <Route path="/product/form/:id" element={<ProductForm />} />
+            <Route path="/pokemons" element={<Pokemons />} />
+            <Route path="/pokemon/form" element={<PokemonForm />} />
+            <Route path="/pokemon/form/:id" element={<PokemonForm />} />
           </Routes>
         </div>
       </BrowserRouter>

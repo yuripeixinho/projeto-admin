@@ -7,32 +7,36 @@ import ButtonsFooter from "../../../components/ButtonsFooter";
 import HeaderSection from "../../../components/HeaderSection";
 import Input from "../../../components/Input";
 import TextArea from "../../../components/TextArea";
-import ProductService from "../../../services/product.service";
+import PokemonService from "../../../services/pokemon.service";
 import { useNavigate } from "react-router-dom";
 
-import "./styles.scss";
-import product from "../../../validations/product";
+import "../../../assets/scss/mixins.scss";
 
-export default function ProductForm() {
+import "./styles.scss";
+import pokemon from "../../../validations/pokemon";
+import AlertMessages from "../../../components/AlertMessages";
+
+export default function PokemonForm() {
   const { id } = useParams();
-  const [productValues, setProductValues] = useState();
+  const [pokemonValues, setPokemonValues] = useState();
   const [actionCreate, setActionCreate] = useState(true);
+  const [hasAlert, setHasAlert] = useState(false);
 
   let navigate = useNavigate();
 
-  const _productService = new ProductService();
+  const _pokemonService = new PokemonService();
 
   useEffect(() => {
     if (id) {
-      async function getProducts() {
-        const productResponse = await _productService.read(id);
-        setProductValues(productResponse);
+      async function getPokemon() {
+        const pokemonResponse = await _pokemonService.read(id);
+        setPokemonValues(pokemonResponse);
       }
 
       setActionCreate(false);
-      getProducts();
+      getPokemon();
     } else {
-      setProductValues({
+      setPokemonValues({
         nome: "",
         preco: "",
         ingredientes: "",
@@ -44,22 +48,22 @@ export default function ProductForm() {
     }
   }, [id]);
 
-  async function onCreateProduct(values) {
+  async function onCreatePokemon(values) {
     if (actionCreate) {
-      await _productService
+      await _pokemonService
         .create(values)
         .then((response) => {
-          navigate("/products");
+          navigate("/pokemons");
         })
         .catch((response) => {
           console.log(response);
         });
     } else {
       debugger;
-      await _productService
+      await _pokemonService
         .update(values)
         .then((response) => {
-          console.log(response);
+          setHasAlert(true);
         })
         .catch((response) => {
           console.log(response);
@@ -70,10 +74,10 @@ export default function ProductForm() {
   async function handleDelete(values) {
     console.log(values);
     debugger;
-    await _productService
+    await _pokemonService
       .delete(values.id)
       .then((response) => {
-        navigate("/products");
+        navigate("/pokemons");
       })
       .catch((response) => {
         console.log(response);
@@ -82,7 +86,7 @@ export default function ProductForm() {
 
   return (
     <Row>
-      <HeaderSection title={actionCreate ? "Create product" : "Edit product"} />
+      <HeaderSection title={actionCreate ? "Create pokemon" : "Edit pokemon"} />
 
       <Col
         xl="5"
@@ -90,14 +94,14 @@ export default function ProductForm() {
         md="5"
         sm="5"
         xs="5"
-        className="product-form-container"
+        className="pokemon-form-container"
       >
         <Formik
           enableReinitialize={true}
-          validationSchema={product}
-          initialValues={productValues}
+          validationSchema={pokemon}
+          initialValues={pokemonValues}
           onSubmit={(values) => {
-            onCreateProduct(values);
+            onCreatePokemon(values);
           }}
         >
           {(props) => (
@@ -152,7 +156,7 @@ export default function ProductForm() {
                   buttonSubmit={true}
                   buttonCancel={true}
                   buttonDelete={actionCreate ? false : true}
-                  routeNavigate="/products"
+                  routeNavigate="/pokemons"
                   handleDelete={handleDelete}
                   props={props.values}
                 />
@@ -161,6 +165,12 @@ export default function ProductForm() {
           )}
         </Formik>
       </Col>
+
+      {hasAlert && (
+        <Col md="12">
+          <AlertMessages label="teste" />
+        </Col>
+      )}
     </Row>
   );
 }
