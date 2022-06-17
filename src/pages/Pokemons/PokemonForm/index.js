@@ -9,6 +9,7 @@ import Input from "../../../components/Input";
 import TextArea from "../../../components/TextArea";
 import PokemonService from "../../../services/pokemon.service";
 import { useNavigate } from "react-router-dom";
+import ImageDefault from "../../../assets/images/default-img-placeholder.png";
 
 import "../../../assets/scss/mixins.scss";
 
@@ -20,7 +21,9 @@ export default function PokemonForm() {
   const { id } = useParams();
   const [pokemonValues, setPokemonValues] = useState();
   const [actionCreate, setActionCreate] = useState(true);
-  const [hasAlert, setHasAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [danger, setDanger] = useState(false);
+  const [sucess, setSucess] = useState(false);
 
   let navigate = useNavigate();
 
@@ -53,39 +56,49 @@ export default function PokemonForm() {
   async function onCreatePokemon(values) {
     debugger;
     if (actionCreate) {
-      debugger;
       await _pokemonService
         .create(values)
         .then((response) => {
-          debugger;
           navigate("/pokemons");
         })
-        .catch((response) => {
-          console.log(response);
+        .catch(({ response }) => {
+          setAlertMessage(`${response}`);
         });
     } else {
-      debugger;
       await _pokemonService
         .update(values)
         .then((response) => {
-          setHasAlert(true);
+          setAlertMessage("Pokemon updated successfully.");
+          setSucess(true);
+
+          setTimeout(() => {
+            setSucess(false);
+          }, 5000);
         })
         .catch((response) => {
-          console.log(response);
+          setAlertMessage(`${response}`);
+          setDanger(true);
+
+          setTimeout(() => {
+            setDanger(false);
+          }, 5000);
         });
     }
   }
 
   async function handleDelete(values) {
-    console.log(values);
-    debugger;
     await _pokemonService
       .delete(values.id)
       .then((response) => {
         navigate("/pokemons");
       })
       .catch((response) => {
-        console.log(response);
+        setAlertMessage(`${response}`);
+        setDanger(true);
+
+        setTimeout(() => {
+          setDanger(false);
+        }, 5000);
       });
   }
 
@@ -93,14 +106,7 @@ export default function PokemonForm() {
     <Row>
       <HeaderSection title={actionCreate ? "Create pokemon" : "Edit pokemon"} />
 
-      <Col
-        xl="5"
-        lg="5"
-        md="5"
-        sm="5"
-        xs="5"
-        className="pokemon-form-container"
-      >
+      <Col lg="5" md="5" sm="5" xs="5" className="pokemon-form-container">
         <Formik
           enableReinitialize={true}
           validationSchema={pokemon}
@@ -112,11 +118,11 @@ export default function PokemonForm() {
           {(props) => (
             <Form>
               <Row>
-                <Col xl="4" lg="4" md="4" sm="4" xs="4">
+                <Col lg="4" md="4" sm="4" xs="4" className="input-container">
                   <Input label="Nome" required={true} type="text" name="nome" />
                 </Col>
 
-                <Col xl="3" lg="3" md="3" sm="3" xs="3">
+                <Col lg="3" md="3" sm="3" xs="3" className="input-container">
                   <Input
                     label="Vida"
                     required={true}
@@ -125,7 +131,7 @@ export default function PokemonForm() {
                   />
                 </Col>
 
-                <Col xl="3" lg="3" md="3" sm="3" xs="3">
+                <Col lg="3" md="3" sm="3" xs="3" className="input-container">
                   <Input
                     label="Dano"
                     required={true}
@@ -134,7 +140,7 @@ export default function PokemonForm() {
                   />
                 </Col>
 
-                <Col xl="2" lg="2" md="2" sm="2" xs="2">
+                <Col lg="2" md="2" sm="2" xs="2" className="input-container">
                   <Input
                     label="Preço"
                     required={true}
@@ -143,7 +149,13 @@ export default function PokemonForm() {
                   />
                 </Col>
 
-                <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                <Col
+                  lg="12"
+                  md="12"
+                  sm="12"
+                  xs="12"
+                  className="input-container"
+                >
                   <TextArea
                     label="Descrição"
                     required={true}
@@ -152,14 +164,7 @@ export default function PokemonForm() {
                   />
                 </Col>
 
-                <Col
-                  xl="12"
-                  lg="12"
-                  md="12"
-                  sm="12"
-                  xs="12"
-                  className="input-container"
-                >
+                <Col lg="7" md="7" sm="7" xs="7" className="input-container">
                   <Input
                     label="Link da imagem"
                     required={true}
@@ -168,7 +173,11 @@ export default function PokemonForm() {
                   />
 
                   <img
-                    src={props?.values?.linkImagem}
+                    src={
+                      props?.values?.linkImagem.length
+                        ? props?.values?.linkImagem
+                        : ImageDefault
+                    }
                     alt="Vizualização de imagem"
                   />
                 </Col>
@@ -189,11 +198,9 @@ export default function PokemonForm() {
         </Formik>
       </Col>
 
-      {hasAlert && (
-        <Col md="12">
-          <AlertMessages label="teste" />
-        </Col>
-      )}
+      <Col md="12">
+        <AlertMessages label={alertMessage} sucess={sucess} danger={danger} />
+      </Col>
     </Row>
   );
 }

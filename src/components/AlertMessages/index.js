@@ -13,7 +13,7 @@ export default function AlertMessages({
     <>
       {simple && (
         <div className="alert simple-alert">
-          <span>Simple Alert Message</span>
+          <span>{label}</span>
         </div>
       )}
 
@@ -25,13 +25,13 @@ export default function AlertMessages({
 
       {danger && (
         <div className="alert danger-alert">
-          <span>Danger Alert Message</span>
+          <span>{label}</span>
         </div>
       )}
 
       {warning && (
         <div className="alert warning-alert">
-          <span>Warning Alert Message</span>
+          <span>{label}</span>
         </div>
       )}
     </>
