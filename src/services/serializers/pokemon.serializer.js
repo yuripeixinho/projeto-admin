@@ -1,6 +1,5 @@
 export default class PokemonSerializer {
   fromJson(json) {
-    debugger;
     const pokemon = {};
 
     Object.assign(

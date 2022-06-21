@@ -19,6 +19,12 @@ export default function NavBar() {
             <span>Pokemons</span>
           </li>
         </Link>
+
+        <Link to="/users">
+          <li>
+            <span>Users</span>
+          </li>
+        </Link>
       </ul>
     </Row>
   );
