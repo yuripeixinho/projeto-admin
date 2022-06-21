@@ -106,7 +106,7 @@ export default function PokemonForm() {
     <Row>
       <HeaderSection title={actionCreate ? "Create pokemon" : "Edit pokemon"} />
 
-      <Col lg="5" md="5" sm="5" xs="5" className="pokemon-form-container">
+      <Col md="7" xl="5" className="pokemon-form-container">
         <Formik
           enableReinitialize={true}
           validationSchema={pokemon}
@@ -118,11 +118,25 @@ export default function PokemonForm() {
           {(props) => (
             <Form>
               <Row>
-                <Col lg="4" md="4" sm="4" xs="4" className="input-container">
+                <Col
+                  xl="12"
+                  lg="12"
+                  md="6"
+                  sm="12"
+                  xs="12"
+                  className="input-container"
+                >
                   <Input label="Nome" required={true} type="text" name="nome" />
                 </Col>
 
-                <Col lg="3" md="3" sm="3" xs="3" className="input-container">
+                <Col
+                  xl="4"
+                  lg="4"
+                  md="6"
+                  sm="12"
+                  xs="12"
+                  className="input-container"
+                >
                   <Input
                     label="Vida"
                     required={true}
@@ -131,7 +145,14 @@ export default function PokemonForm() {
                   />
                 </Col>
 
-                <Col lg="3" md="3" sm="3" xs="3" className="input-container">
+                <Col
+                  xl="4"
+                  lg="4"
+                  md="6"
+                  sm="12"
+                  xs="12"
+                  className="input-container"
+                >
                   <Input
                     label="Dano"
                     required={true}
@@ -140,7 +161,14 @@ export default function PokemonForm() {
                   />
                 </Col>
 
-                <Col lg="2" md="2" sm="2" xs="2" className="input-container">
+                <Col
+                  xl="4"
+                  lg="4"
+                  md="6"
+                  sm="12"
+                  xs="12"
+                  className="input-container"
+                >
                   <Input
                     label="Preço"
                     required={true}
@@ -150,6 +178,7 @@ export default function PokemonForm() {
                 </Col>
 
                 <Col
+                  xl="12"
                   lg="12"
                   md="12"
                   sm="12"
@@ -164,7 +193,14 @@ export default function PokemonForm() {
                   />
                 </Col>
 
-                <Col lg="7" md="7" sm="7" xs="7" className="input-container">
+                <Col
+                  xl="7"
+                  lg="7"
+                  md="8"
+                  sm="12"
+                  xs="12"
+                  className="input-container"
+                >
                   <Input
                     label="Link da imagem"
                     required={true}

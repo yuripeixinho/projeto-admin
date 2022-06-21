@@ -20,7 +20,7 @@ export default function ItemTable({ items, buttonLabel, createEndpoint }) {
       </Col>
 
       {items?.map((item) => (
-        <Col xl="3" lg="3" md="3" sm="3" xs="3" key={item.id}>
+        <Col xl="3" lg="3" md="4" sm="6" xs="12" key={item.id}>
           <div
             className="items-table-container"
             onClick={() => navigate(`${createEndpoint}/form/${item.id}`)}
