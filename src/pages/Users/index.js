@@ -36,7 +36,7 @@ export default function Users() {
     {
       id: 4,
       name: "Amount of pokemon",
-      selector: (row) => row.pokemons.length,
+      selector: (row) => row.pokemons?.length,
     },
   ];
 

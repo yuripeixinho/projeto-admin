@@ -13,4 +13,21 @@ export default class UserSerializer {
 
     return user;
   }
+
+  toJson(user) {
+    debugger;
+
+    const userToJson = {};
+
+    Object.assign(
+      userToJson,
+      user.nome && { nome: user.nome },
+      user.email && { email: user.email },
+      user.linkFotoPerfil && { linkFotoPerfil: user.linkFotoPerfil },
+      user.pokeCoin && { pokeCoin: user.pokeCoin },
+      user.senha && { senha: user.senha }
+    );
+
+    return userToJson;
+  }
 }

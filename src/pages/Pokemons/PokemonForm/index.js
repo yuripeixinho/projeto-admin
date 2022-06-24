@@ -210,11 +210,11 @@ export default function PokemonForm() {
 
                   <img
                     src={
-                      props?.values?.linkImagem.length
+                      props?.values?.linkImagem?.length
                         ? props?.values?.linkImagem
                         : ImageDefault
                     }
-                    alt="Vizualização de imagem"
+                    alt="Preview"
                   />
                 </Col>
               </Row>
