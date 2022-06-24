@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import "./styles.scss";
 import UserService from "../../../services/user.service";
 import AlertMessages from "../../../components/AlertMessages";
+import UserPokemons from "./UserPokemons";
 
 export default function UserForm() {
   const { id } = useParams();
@@ -30,7 +31,10 @@ export default function UserForm() {
       setActionCreate(false);
 
       async function getUser() {
-        const pokemonResponse = await _userService.read(id);
+        const pokemonResponse = await _userService.readRelationship(
+          id,
+          "pokemon"
+        );
         setUserValues(pokemonResponse);
       }
 
@@ -101,16 +105,16 @@ export default function UserForm() {
     <Row>
       <HeaderSection title={id ? "Update user" : "Create user"} />
 
-      <Col md="7" xl="5" className="user-form-container">
-        <Formik
-          enableReinitialize={true}
-          initialValues={userValues}
-          onSubmit={(values) => onCreateUser(values)}
-        >
-          {(props) => (
-            <Form>
-              {JSON.stringify(props.values)}
-              <Row>
+      <Formik
+        enableReinitialize={true}
+        initialValues={userValues}
+        onSubmit={(values) => onCreateUser(values)}
+      >
+        {(props) => (
+          <Form>
+            {console.log(props.values)}
+            <Row>
+              <Col md="7" xl="5" className="user-form-container">
                 <Col
                   className="input-container"
                   xl="12"
@@ -178,22 +182,26 @@ export default function UserForm() {
                     alt="Preview"
                   />
                 </Col>
+              </Col>
 
-                <Col xl="12" lg="12" md="12" sm="12" xs="12">
-                  <ButtonsFooter
-                    buttonSubmit={true}
-                    buttonCancel={true}
-                    buttonDelete={actionCreate ? false : true}
-                    routeNavigate="/users"
-                    handleDelete={handleDelete}
-                    props={props.values}
-                  />
-                </Col>
-              </Row>
-            </Form>
-          )}
-        </Formik>
-      </Col>
+              <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                <UserPokemons props={props?.values?.pokemons} />
+              </Col>
+
+              <Col xl="12" lg="12" md="12" sm="12" xs="12">
+                <ButtonsFooter
+                  buttonSubmit={true}
+                  buttonCancel={true}
+                  buttonDelete={actionCreate ? false : true}
+                  routeNavigate="/users"
+                  handleDelete={handleDelete}
+                  props={props.values}
+                />
+              </Col>
+            </Row>
+          </Form>
+        )}
+      </Formik>
 
       <Col md="12">
         <AlertMessages label={alertMessage} sucess={sucess} danger={danger} />

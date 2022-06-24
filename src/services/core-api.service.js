@@ -15,6 +15,7 @@ export default class CoreApiService {
   }
 
   async readRelationship(id, param) {
+    debugger
     const response = await api.get(`${this.endpoint}/${id}/?_embed=${param}`);
     const data = response.data;
 
@@ -22,7 +23,6 @@ export default class CoreApiService {
   }
 
   async list() {
-    debugger;
     const response = await api.get(`${this.endpoint}`);
     const data = response.data;
 
@@ -30,7 +30,7 @@ export default class CoreApiService {
   }
 
   async create(item) {
-    debugger
+    debugger;
     const response = await api.post(
       `${this.endpoint}`,
       this.serializer.toJson(item)

@@ -1,10 +1,26 @@
+import PokemonSerializer from "./pokemon.serializer";
+
 export default class UserSerializer {
+  constructor() {
+    this.PokemonSerializer = new PokemonSerializer();
+  }
+
   fromJson(json) {
     debugger;
     const user = {};
 
     Object.assign(
       user,
+      json.nome && { nome: json.nome },
+      json.email && { email: json.email },
+      json.linkFotoPerfil && { linkFotoPerfil: json.linkFotoPerfil },
+      json.pokeCoin && { pokeCoin: json.pokeCoin },
+      json.senha && { senha: json.senha },
+      json.pokemons && {
+        pokemons: json.pokemons.map((item) =>
+          this.PokemonSerializer.fromJson(item)
+        ),
+      },
 
       json.response && {
         users: json.response,
@@ -16,7 +32,6 @@ export default class UserSerializer {
 
   toJson(user) {
     debugger;
-
     const userToJson = {};
 
     Object.assign(
