@@ -112,7 +112,6 @@ export default function UserForm() {
       >
         {(props) => (
           <Form>
-            {console.log(props.values)}
             <Row>
               <Col md="7" xl="5" className="user-form-container">
                 <Col

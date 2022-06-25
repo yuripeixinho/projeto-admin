@@ -1,0 +1,25 @@
+#login {
+  .form {
+    background-color: #f1f1f1;
+    width: 100%;
+    max-width: 480px;
+    padding: 0.5rem;
+
+    .field {
+      padding-bottom: 1.5rem;
+
+      label {
+        display: block;
+      }
+
+      input {
+        width: 100%; 
+      }
+    }
+  }
+
+  .action {
+    text-align: center;
+    margin-top: 0.8rem;
+  }
+}
