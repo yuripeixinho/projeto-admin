@@ -22,7 +22,6 @@ export default function LoginPage() {
 
       if (emailResponse?.data?.length && passwordResponse?.data?.length) {
         setUserVerification(true);
-        console.log(userVerification);
       } else {
         setUserVerification(false);
       }

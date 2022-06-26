@@ -15,10 +15,15 @@ import { AuthContext } from "./contexts/Auth";
 
 function AppRoutes() {
   const Private = ({ children }) => {
+    debugger;
     const { authenticated, loading } = useContext(AuthContext);
 
     if (loading) {
       return <div>Loading...</div>;
+    }
+
+    if (!authenticated && window.location.pathname === "/login") {
+      return false;
     }
 
     if (!authenticated) {
@@ -32,9 +37,11 @@ function AppRoutes() {
     <div className="main-app">
       <BrowserRouter>
         <AuthProvider>
-          <div className="nav-bar-container">
-            <NavBar />
-          </div>
+          <Private>
+            <div className="nav-bar-container">
+              <NavBar />
+            </div>
+          </Private>
 
           <div className="main-page-container">
             <Routes>

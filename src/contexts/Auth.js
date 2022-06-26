@@ -31,9 +31,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    navigate("/login");
     localStorage.removeItem("user");
     setUser(null);
-    navigate("/login");
   };
 
   return (

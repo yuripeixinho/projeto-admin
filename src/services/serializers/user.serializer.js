@@ -17,6 +17,7 @@ export default class UserSerializer {
       json.linkFotoPerfil && { linkFotoPerfil: json.linkFotoPerfil },
       json.pokeCoin && { pokeCoin: json.pokeCoin },
       json.senha && { senha: json.senha },
+      json.tipoPerfil && { tipoPerfil: json.tipoPerfil },
       json.pokemons && {
         pokemons: json.pokemons.map((item) =>
           this.PokemonSerializer.fromJson(item)
@@ -41,7 +42,8 @@ export default class UserSerializer {
       user.email && { email: user.email },
       user.linkFotoPerfil && { linkFotoPerfil: user.linkFotoPerfil },
       user.pokeCoin && { pokeCoin: user.pokeCoin },
-      user.senha && { senha: user.senha }
+      user.senha && { senha: user.senha },
+      user.tipoPerfil && { tipoPerfil: user.tipoPerfil }
     );
 
     return userToJson;

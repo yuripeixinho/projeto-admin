@@ -12,8 +12,6 @@ export default function NavBar() {
     logout();
   };
 
-  console.log(user);
-
   return (
     <Row className="nav-bar-container">
       <Col xl="7" lg="7" md="7" sm="7" xs="7" className="nav-user-info">
