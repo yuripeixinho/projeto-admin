@@ -11,6 +11,7 @@ export default class UserSerializer {
 
     Object.assign(
       user,
+      json.id && { id: json.id },
       json.nome && { nome: json.nome },
       json.email && { email: json.email },
       json.linkFotoPerfil && { linkFotoPerfil: json.linkFotoPerfil },

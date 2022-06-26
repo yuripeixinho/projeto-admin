@@ -53,16 +53,51 @@ function AppRoutes() {
                 path="/pokemons"
                 element={
                   <Private>
-                    <Pokemons />{" "}
+                    <Pokemons />
                   </Private>
                 }
               />
-              <Route path="/pokemon/form" element={<PokemonForm />} />
-              <Route path="/pokemon/form/:id" element={<PokemonForm />} />
+              <Route
+                path="/pokemon/form"
+                element={
+                  <Private>
+                    <PokemonForm />
+                  </Private>
+                }
+              />
+              <Route
+                path="/pokemon/form/:id"
+                element={
+                  <Private>
+                    <PokemonForm />
+                  </Private>
+                }
+              />
 
-              <Route path="/users" element={<Users />} />
-              <Route path="/user/form" element={<UserForm />} />
-              <Route path="/user/form/:id" element={<UserForm />} />
+              <Route
+                path="/users"
+                element={
+                  <Private>
+                    <Users />
+                  </Private>
+                }
+              />
+              <Route
+                path="/user/form"
+                element={
+                  <Private>
+                    <UserForm />
+                  </Private>
+                }
+              />
+              <Route
+                path="/user/form/:id"
+                element={
+                  <Private>
+                    <UserForm />
+                  </Private>
+                }
+              />
             </Routes>
           </div>
         </AuthProvider>

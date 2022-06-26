@@ -19,12 +19,13 @@
 
     ul {
       list-style: none;
+      padding: 0px;
+      background-color: $blackColor1;
 
       a {
         text-decoration: none;
         li {
           padding: 10%;
-          background-color: $blackColor1;
           border-bottom: 1px solid $whiteColor3;
           cursor: pointer;
 

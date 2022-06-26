@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect } from "react";
 
 import { AuthContext } from "../../contexts/Auth";
@@ -17,9 +18,11 @@ export default function LoginPage() {
       const emailResponse = await api.get(`users?email=${email}`);
       const passwordResponse = await api.get(`users?senha=${password}`);
 
+      setUser(emailResponse?.data?.[0]);
+
       if (emailResponse?.data?.length && passwordResponse?.data?.length) {
         setUserVerification(true);
-        console.log(userVerification)
+        console.log(userVerification);
       } else {
         setUserVerification(false);
       }
@@ -33,7 +36,7 @@ export default function LoginPage() {
     e.preventDefault();
 
     if (userVerification) {
-      login(email, password);
+      login(user);
     } else {
       alert("Login ou senha incorretos.");
     }

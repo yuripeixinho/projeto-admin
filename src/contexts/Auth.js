@@ -18,23 +18,16 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (email, password) => {
-    debugger;
-    // api criar uma session
-    console.log(email);
-    console.log(password);
-
+  const login = (user) => {
+    delete user.senha;
     const loggedUser = {
-      id: "123",
-      email,
+      ...user,
     };
 
     localStorage.setItem("user", JSON.stringify(loggedUser));
 
-    if (password === "@Hotmail123") {
-      setUser(loggedUser);
-      navigate("/");
-    }
+    setUser(loggedUser);
+    navigate("/");
   };
 
   const logout = () => {
