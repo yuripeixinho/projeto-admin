@@ -7,19 +7,12 @@ export default class PokemonService extends CoreApiService {
     super(undefined, "pokemon", new PokemonSerializer());
   }
 
-  async listAllPokemons() {
-    debugger;
-    const response = await api.get(`${this.endpoint}?limit=20`);
+  async listAllPokemons(limit) {
+    const response = await api.get(
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}`
+    );
 
-    const result = response?.data?.results;
-
-    result?.forEach(async (pokemon) => {
-      const res = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
-      );
-      debugger;
-
-      const data = await res.json();
-    });
+    const data = response.data;
+    return data;
   }
 }
