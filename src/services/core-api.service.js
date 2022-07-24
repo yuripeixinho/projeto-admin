@@ -14,14 +14,6 @@ export default class CoreApiService {
     return data;
   }
 
-  async readRelationship(id, param) {
-    debugger
-    const response = await api.get(`${this.endpoint}/${id}/?_embed=${param}`);
-    const data = response.data;
-
-    return this.serializer.fromJson(data);
-  }
-
   async list() {
     const response = await api.get(`${this.endpoint}`);
     const data = response.data;

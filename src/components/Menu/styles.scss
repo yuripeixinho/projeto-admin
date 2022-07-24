@@ -1,0 +1,14 @@
+.nav-container {
+  position: fixed;
+  bottom: 0.625rem;
+  right: 1rem;
+
+  .menu-image-container {
+    width: 100%;
+    text-align: right;
+
+    img {
+      width: 10%;
+    }
+  }
+}
