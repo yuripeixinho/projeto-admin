@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import PokemonService from "../../../services/pokemon.service";
 import { Row, Col } from "reactstrap";
-import ArrowLeft from "../../../assets/images/icons/arrow-left.svg";
 
 import "./styles.scss";
 import PokemonStatus from "./PokemonStatus";
@@ -25,9 +24,6 @@ export default function Pokemon() {
     getPokemon();
   }, [id]);
 
-  console.log(pokemon);
-
-
   return (
     <Col xs="12" sm="12" md="12" lg="12" xl="12" className={dinamicBackground}>
       <div className="main">
@@ -47,9 +43,7 @@ export default function Pokemon() {
         </Col>
       </div>
 
-      <Col xs="12" sm="12" md="12" lg="12" xl="12">
-        <PokemonStatus status={pokemon?.stats} />
-      </Col>
+      <PokemonStatus status={pokemon?.stats} />
     </Col>
   );
 }

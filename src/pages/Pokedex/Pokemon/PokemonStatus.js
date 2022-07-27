@@ -1,9 +1,30 @@
 import React from "react";
-
-import { Row, Col } from "reactstrap";
+import Health from "../../../assets/images/icons/health.svg";
+import Lighting from "../../../assets/images/icons/lighting.svg";
+import Shield from "../../../assets/images/icons/shield.svg";
+import Speed from "../../../assets/images/icons/speed.svg";
 
 export default function PokemonStatus({ status }) {
-  console.log(status);
+  return (
+    <div className="pokemon-status-container">
+      {status?.map(
+        (item) =>
+          item !== null && (
+            <div className="status-box">
+              <div className="icon">
+                {item?.stat?.name === "hp" && <img src={Health} alt="" />}
+                {item?.stat?.name === "attack" && <img src={Lighting} alt="" />}
+                {item?.stat?.name === "defense" && <img src={Shield} alt="" />}
+                {item?.stat?.name === "speed" && <img src={Speed} alt="" />}
+              </div>
 
-  return <div>status</div>;
+              <div className="text">
+                <span className="name">{item?.stat?.name}</span>
+                <span className="number">{item.base_stat}</span>
+              </div>
+            </div>
+          )
+      )}
+    </div>
+  );
 }

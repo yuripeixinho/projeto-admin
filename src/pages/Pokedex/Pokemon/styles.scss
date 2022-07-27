@@ -15,6 +15,7 @@
         font-size: 2.2em;
         font-weight: bold;
         color: #fff;
+        text-transform: capitalize;
       }
 
       button {
@@ -24,7 +25,44 @@
 
         span {
           font-size: 0.9em;
+          text-transform: capitalize;
         }
+      }
+    }
+  }
+}
+
+.pokemon-status-container {
+  margin: 2rem auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+
+  .status-box {
+    text-align: center;
+    width: 19%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding-bottom: 0.5rem;
+
+    .icon {
+      margin: 15px 0px 8px 0px;
+      img {
+        width: 30%;
+      }
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+
+      .name {
+        font-size: 0.7em;
+        text-transform: uppercase;
+      }
+
+      .number {
+        font-weight: bold;
       }
     }
   }
