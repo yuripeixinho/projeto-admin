@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Row, Container } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import PokemonService from "../../services/pokemon.service";
 import PokemonCard from "./PokemonCard";
 
@@ -10,13 +9,11 @@ export default function Pokedex() {
   const [allPokemon, setAllPokemon] = useState([]);
   const [loadingPage, setLoadingPage] = useState(false);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     async function getAllPokemons() {
       setLoadingPage(true);
       const pokemonService = new PokemonService();
-      const pokemonResponse = await pokemonService.listAllPokemons(200);
+      const pokemonResponse = await pokemonService.listAllPokemons(10);
 
       function createPokemonObject(result) {
         result.forEach(async (pokemon) => {
@@ -45,25 +42,20 @@ export default function Pokedex() {
   }
 
   return (
-    <div>
-      <div className="header-container">header</div>
-
-      <Container>
-        <Row>
-          {allPokemon.map((pokemon) => (
-            <>
-              {console.log(pokemon)}
-              <PokemonCard
-                id={pokemon.id}
-                name={pokemon.name}
-                image={pokemon.sprites.other.home.front_default}
-                types={pokemon.types[0].type.name}
-                key={pokemon.id}
-              />
-            </>
-          ))}
-        </Row>
-      </Container>
+    <div className="pokedex-list-container">
+      <Row className="cards-container">
+        {allPokemon.map((pokemon) => (
+          <Col xs="6" sm="6" md="4" lg="3" xl="2">
+            <PokemonCard
+              id={pokemon.id}
+              name={pokemon.name}
+              image={pokemon.sprites.other.home.front_default}
+              types={pokemon.types[0].type.name}
+              key={pokemon.id}
+            />
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default class CoreApiService {
     const response = await api.get(`${this.endpoint}/${id}`);
     const data = response.data;
 
-    return data;
+    return this.serializer.fromJson(data);
   }
 
   async list() {

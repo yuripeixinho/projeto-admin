@@ -6,16 +6,23 @@ export default class PokemonSerializer {
     Object.assign(
       pokemon,
       json.id && { id: json.id },
-      json.nome && { nome: json.nome },
-      json.descricao && { descricao: json.descricao },
-      json.vida && { vida: json.vida },
-      json.dano && { dano: json.dano },
-      json.preco && { preco: json.preco },
-      json.quantCliques && { quantCliques: json.quantCliques },
-      json.linkImagem && { linkImagem: json.linkImagem },
+      json.name && { name: json.name },
+      json.sprites && { sprites: json.sprites },
+      json.types && { types: json.types[0].type.name },
 
-      json.response && {
-        pokemons: json.response,
+      json.stats && {
+        stats: json?.stats?.map((item) => {
+          if (
+            item.stat.name === "hp" ||
+            item.stat.name === "attack" ||
+            item.stat.name === "defense" ||
+            item.stat.name === "speed"
+          ) {
+            return item;
+          } else {
+            return null;
+          }
+        }),
       }
     );
 

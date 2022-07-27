@@ -1,28 +1,29 @@
-.header-container {
-  width: 100%;
-  padding: 2rem;
+.pokedex-list-container {
+  .cards-container {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
-
 .pokemon-card-container {
   margin: 0.625rem 0;
   text-align: center;
 
   .text-pokemon-info {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 
     span {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 500;
     }
   }
 
   img {
-    width: 70%;
+    width: 75%;
   }
 }
 
 .button-pokemon-type {
-  padding: 3px 40px;
+  padding: 3px 25px;
   border-radius: 20px;
   color: #fff;
   border: none;
@@ -32,37 +33,3 @@
   }
 }
 
-// CUSTOMS BUTTONS AND
-.rock {
-  background-color: #945151;
-}
-.ghost {
-  background-color: #f7f7f7;
-}
-.electric {
-  background-color: #FECE01;
-}
-.bug {
-  background-color: #f0be74;
-}
-.poison {
-  background-color: #e0a7f6;
-}
-.normal {
-  background-color: #AEADAC;
-}
-.fairy {
-  background-color: #ffc0cbdc;
-}
-.fire {
-  background-color: #ff9a00;
-}
-.grass {
-  background-color: #387f28;
-}
-.water {
-  background-color: #70B1FF;
-}
-.ground {
-  
-}

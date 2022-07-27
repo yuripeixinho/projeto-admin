@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Menu from "./components/Menu";
 import Pokedex from "./pages/Pokedex";
 import InitialPage from "./pages/InitialPage";
 import Pokemon from "./pages/Pokedex/Pokemon";
@@ -14,8 +13,6 @@ function AppRoutes() {
         <Route path="/pokedex" element={<Pokedex />} />
         <Route path="/pokedex/:id" element={<Pokemon />} />
       </Routes>
-
-      <Menu />
     </BrowserRouter>
   );
 }
