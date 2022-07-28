@@ -15,4 +15,11 @@ export default class PokemonService extends CoreApiService {
     const data = response.data;
     return data;
   }
+
+  async getPokemonSpecies(specie) {
+    const response = await api.get(`${specie}`);
+
+    const data = response.data;
+    return this.serializer.fromJson(data);
+  }
 }

@@ -33,10 +33,10 @@
 }
 
 .pokemon-status-container {
-  margin: 2rem auto;
+  margin: 2rem auto 1.5rem;
   width: 90%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
   .status-box {
     text-align: center;

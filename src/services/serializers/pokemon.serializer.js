@@ -1,15 +1,22 @@
 export default class PokemonSerializer {
   fromJson(json) {
-    debugger;
     const pokemon = {};
 
     Object.assign(
       pokemon,
       json.id && { id: json.id },
+      json.height && { height: json.height },
+      json.weight && { weight: json.weight },
       json.name && { name: json.name },
-      json.sprites && { sprites: json.sprites },
+      json.sprites && {
+        sprites: json.sprites,
+        spriteAnimated:
+          json["sprites"]["versions"]["generation-v"]["black-white"][
+            "animated"
+          ],
+      },
       json.types && { types: json.types[0].type.name },
-
+      json.species && { specie: json.species.url },
       json.stats && {
         stats: json?.stats?.map((item) => {
           if (
@@ -23,6 +30,10 @@ export default class PokemonSerializer {
             return null;
           }
         }),
+      },
+
+      json.flavor_text_entries && {
+        textAbout: json.flavor_text_entries[10].flavor_text,
       }
     );
 

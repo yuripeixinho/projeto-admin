@@ -10,7 +10,7 @@ export default function PokemonStatus({ status }) {
       {status?.map(
         (item) =>
           item !== null && (
-            <div className="status-box">
+            <div className="status-box" key={item.id}>
               <div className="icon">
                 {item?.stat?.name === "hp" && <img src={Health} alt="" />}
                 {item?.stat?.name === "attack" && <img src={Lighting} alt="" />}

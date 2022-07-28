@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PokemonService from "../../../services/pokemon.service";
-import { Row, Col } from "reactstrap";
+import { Col } from "reactstrap";
 
 import "./styles.scss";
 import PokemonStatus from "./PokemonStatus";
+import TabInfo from "./TabInfo";
 
 export default function Pokemon() {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState({});
   const dinamicBackground = `pokemon-info ${pokemon.types}-background`;
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     async function getPokemon() {
-      debugger;
       const _pokemonService = new PokemonService();
       const pokemonResponse = await _pokemonService.read(id);
       setPokemon(pokemonResponse);
@@ -24,6 +22,7 @@ export default function Pokemon() {
     getPokemon();
   }, [id]);
 
+  console.log(pokemon);
   return (
     <Col xs="12" sm="12" md="12" lg="12" xl="12" className={dinamicBackground}>
       <div className="main">
@@ -44,6 +43,13 @@ export default function Pokemon() {
       </div>
 
       <PokemonStatus status={pokemon?.stats} />
+
+      <TabInfo
+        specie={pokemon?.specie}
+        height={pokemon.height}
+        weight={pokemon.weight}
+        spriteAnimated={pokemon.spriteAnimated}
+      />
     </Col>
   );
 }
