@@ -45,7 +45,7 @@ export default function Pokedex() {
     <div className="pokedex-list-container">
       <Row className="cards-container">
         {allPokemon.map((pokemon) => (
-          <Col xs="6" sm="6" md="4" lg="3" xl="2">
+          <Col xs="6" sm="6" md="4" lg="3" xl="2" >
             <PokemonCard
               id={pokemon.id}
               name={pokemon.name}

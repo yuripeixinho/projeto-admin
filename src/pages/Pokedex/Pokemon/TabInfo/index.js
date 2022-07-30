@@ -53,7 +53,7 @@ export default function TabInfo({ pokemon }) {
       });
 
       evolutionInfo.forEach(async (name) => {
-        const res = await fetch(`https:pokeapi.co/api/v2/pokemon/${name}`);
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
         const data = await res.json();
 
         setPokemonEvolution((currentList) => [
@@ -113,7 +113,7 @@ export default function TabInfo({ pokemon }) {
           <div className="evolution-info-container">
             <Row>
               {pokemonEvolution.map((pokemon) => (
-                <Col xs="4" sm="4" md="4" lg="4" xl="4">
+                <Col xs="4" sm="4" md="4" lg="4" xl="4" key={pokemon.id}>
                   <div
                     className="evolution-card"
                     onClick={() => navigate(`/pokedex/${pokemon.id}`)}
