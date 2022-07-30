@@ -7,17 +7,28 @@ import { Col } from "reactstrap";
 import "./styles.scss";
 import PokemonStatus from "./PokemonStatus";
 import TabInfo from "./TabInfo";
+import api from "../../../services/api.service";
 
 export default function Pokemon() {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState({});
+  const [aboutPokemon, setAboutPokemon] = useState([]);
   const dinamicBackground = `pokemon-info ${pokemon.types}-background`;
 
   useEffect(() => {
+    async function getAboutPokemon() {
+      const res = await api.get(`pokemon-species/${id}`);
+      const data = res.data;
+
+      setAboutPokemon({ aboutText: data.flavor_text_entries[10].flavor_text });
+    }
+
     async function getPokemon() {
       const _pokemonService = new PokemonService();
       const pokemonResponse = await _pokemonService.read(id);
       setPokemon(pokemonResponse);
+
+      getAboutPokemon();
     }
 
     getPokemon();
@@ -44,7 +55,7 @@ export default function Pokemon() {
 
       <PokemonStatus status={pokemon?.stats} />
 
-      <TabInfo pokemon={pokemon} />
+      <TabInfo pokemon={pokemon} aboutPokemon={aboutPokemon} />
     </Col>
   );
 }

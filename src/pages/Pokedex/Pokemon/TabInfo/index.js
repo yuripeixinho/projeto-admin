@@ -13,11 +13,10 @@ import "./styles.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../../../services/api.service";
 
-export default function TabInfo({ pokemon }) {
+export default function TabInfo({ pokemon, aboutPokemon }) {
   const { id } = useParams();
   const [basicActive, setBasicActive] = useState("tab1");
   const [pokemonEvolution, setPokemonEvolution] = useState([]);
-  const [aboutInfo, setAboutInfo] = useState([]);
 
   let navigate = useNavigate();
 
@@ -61,8 +60,6 @@ export default function TabInfo({ pokemon }) {
           { id: data.id, name: data.name, sprites: data.sprites },
         ]);
       });
-
-      setAboutInfo({ aboutText: response.flavor_text_entries[10].flavor_text });
     }
 
     getEvolutionChain();
@@ -97,7 +94,7 @@ export default function TabInfo({ pokemon }) {
           </div>
 
           <div className="about">
-            <p>{aboutInfo.aboutText}</p>
+            <p>{aboutPokemon.aboutText}</p>
           </div>
 
           <Row className="sprites-container">
