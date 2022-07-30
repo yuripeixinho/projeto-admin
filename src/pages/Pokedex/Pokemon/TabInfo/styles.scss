@@ -42,5 +42,26 @@
         width: 50%;
       }
     }
+
+    .evolution-info-container {
+      .evolution-card {
+        text-align: center;
+
+        span {
+        }
+
+        .img-container {
+          background-color: #516885;
+          border-radius: 50px;
+          img {
+            width: 100%;
+          }
+        }
+
+        p {
+          font-size: 0.8em;
+        }
+      }
+    }
   }
 }

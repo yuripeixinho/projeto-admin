@@ -13,7 +13,7 @@ export default function Pokedex() {
     async function getAllPokemons() {
       setLoadingPage(true);
       const pokemonService = new PokemonService();
-      const pokemonResponse = await pokemonService.listAllPokemons(10);
+      const pokemonResponse = await pokemonService.listAllPokemons(200);
 
       function createPokemonObject(result) {
         result.forEach(async (pokemon) => {

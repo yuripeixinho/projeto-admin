@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PokemonService from "../../../services/pokemon.service";
@@ -22,7 +23,6 @@ export default function Pokemon() {
     getPokemon();
   }, [id]);
 
-  console.log(pokemon);
   return (
     <Col xs="12" sm="12" md="12" lg="12" xl="12" className={dinamicBackground}>
       <div className="main">
@@ -44,12 +44,7 @@ export default function Pokemon() {
 
       <PokemonStatus status={pokemon?.stats} />
 
-      <TabInfo
-        specie={pokemon?.specie}
-        height={pokemon.height}
-        weight={pokemon.weight}
-        spriteAnimated={pokemon.spriteAnimated}
-      />
+      <TabInfo pokemon={pokemon} />
     </Col>
   );
 }

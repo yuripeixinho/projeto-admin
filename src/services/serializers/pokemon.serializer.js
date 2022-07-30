@@ -16,7 +16,6 @@ export default class PokemonSerializer {
           ],
       },
       json.types && { types: json.types[0].type.name },
-      json.species && { specie: json.species.url },
       json.stats && {
         stats: json?.stats?.map((item) => {
           if (
